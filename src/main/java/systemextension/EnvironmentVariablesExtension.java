@@ -59,7 +59,8 @@ public class EnvironmentVariablesExtension implements BeforeEachCallback, AfterE
   }
 
   private void overrideVariables(Map<String, String> existingVariables) {
-    if (existingVariables != null) { // will be null when running on non-Windows machine and theCaseInsensitiveEnvironment variables are passed
+    // will be null when running on non-Windows machine and theCaseInsensitiveEnvironment variables are passed
+    if (existingVariables != null) {
       setVariables.forEach((name, value) -> set(existingVariables, name, value));
     }
   }
@@ -78,7 +79,8 @@ public class EnvironmentVariablesExtension implements BeforeEachCallback, AfterE
   }
 
   private void restoreVariables(Map<String, String> variables, Map<String, String> originalVariables) {
-    if (variables != null) { //theCaseInsensitiveEnvironment may be null
+    // theCaseInsensitiveEnvironment may be null
+    if (variables != null) {
       variables.clear();
       variables.putAll(originalVariables);
     }
@@ -115,7 +117,7 @@ public class EnvironmentVariablesExtension implements BeforeEachCallback, AfterE
         String.format("Cannot access the static field %s of the class %s.", caseInsensitiveEnv, processEnv), e
       );
     } catch (NoSuchFieldException e) {
-      //this field is only available for Windows
+      // this field is only available for Windows
       return null;
     }
   }
