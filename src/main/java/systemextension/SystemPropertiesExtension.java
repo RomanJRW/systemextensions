@@ -13,12 +13,12 @@ public class SystemPropertiesExtension implements BeforeEachCallback, AfterEachC
 
   private Properties originalProperties;
 
-  public void beforeEach(final ExtensionContext extensionContext) throws Exception {
+  public void beforeEach(final ExtensionContext extensionContext) {
     originalProperties = getProperties();
     setProperties(copyOf(originalProperties));
   }
 
-  public void afterEach(final ExtensionContext extensionContext) throws Exception {
+  public void afterEach(final ExtensionContext extensionContext) {
     setProperties(originalProperties);
   }
 
